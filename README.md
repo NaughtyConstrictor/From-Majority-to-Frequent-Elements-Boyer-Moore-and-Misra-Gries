@@ -1,7 +1,7 @@
 # From-Majority-to-Frequent-Elements-Boyer-Moore-and-Misra-Gries
 ## Boyer-Moore Majority Vote Algorithm
 
-The Boyer-Moore majority vote algorithm[^wiki-article] is an efficient algorithm used for finding the majority element, if any, in a sequence of elements using linear time complexity *$O(n)$* and constant space complexity *$O(1)$*.  
+The Boyer-Moore majority vote algorithm[^wiki-article] is an efficient algorithm used for finding the majority element, if any, in a sequence of elements using linear time complexity $O(n)$ and constant space complexity $O(1)$.  
 
 A majority element is an element that appears more than $\lfloor n / 2 \rfloor$[^floor] times in a sequence, where n is the size of the sequence.  
 Based on this definition, there can be only one majority element (or none) in a given sequence.
@@ -9,7 +9,7 @@ Based on this definition, there can be only one majority element (or none) in a 
 
 ## Brute-Force Approach
 One way to solve this problem is by simply iterating through the array, supposing that the current element is indeed the majority element, counting its number of occurrences, and if it is repeated more than $\lfloor n / 2 \rfloor$ times, then it must be the majority element (since there can be at most one majority element); otherwise we repeat this same process for the remaining array elements.  
-This approach uses nested loops, so its time complexity is *$O(n^2)$*, and it keeps track of only one candidate at a time, so its space complexity is *$O(1)$*.
+This approach uses nested loops, so its time complexity is $O(n^2)$, and it keeps track of only one candidate at a time, so its space complexity is $O(1)$.
 
 ```python
 def majority_element(array):
@@ -30,9 +30,9 @@ def majority_element(array):
 
 ## Dictionary (Mapping) Approach
 Another, more efficient, way of solving this problem is by using a dictionary or a hashmap to store the counts of unique elements in the input array and then returning the majority element if it exists.  
-This approach has a time complexity of *$O(n)$* since we need to pass through the array once in order to count the occurrences of each element and construct a counts dictionary.  
-Although to be more accurate, the time complexity is an ***amortized** $O(n)$* because the dictionary creation can go up to *$O(n^2)$* in case there were too many hash collisions[^hash-collision].  
-As for the space complexity, it would be an *$O(n)$* since we need a dictionary to store the counts of each element in the input array.
+This approach has a time complexity of $O(n)$ since we need to pass through the array once in order to count the occurrences of each element and construct a counts dictionary.  
+Although to be more accurate, the time complexity is an ***amortized** $O(n)$ because the dictionary creation can go up to $O(n^2)$ in case there were too many hash collisions[^hash-collision].  
+As for the space complexity, it would be an $O(n)$ since we need a dictionary to store the counts of each element in the input array.
 
 ```python
 def majority_element(array):
@@ -114,7 +114,7 @@ Then, as we go through the array, if we encounter a supporter, that is the same 
 What if the counter reaches the value 0? That would mean that all supporters of the current candidate have been knocked out, and the one standing right now is the current voter, so we would have to update our candidate variable.  
 And this process continues until we exhaust the entire array. This was the pairing phase, and I believe that the counting phase is self-explanatory and quite easy to implement.  
 
-This makes the time complexity of this algorithm *$O(n)$* since we need to loop through the input array twice, once for each phase, and the space complexity is constant *$O(1)$* since we only need 2 variables, one for the candidate and another for the counter.
+This makes the time complexity of this algorithm $O(n)$ since we need to loop through the input array twice, once for each phase, and the space complexity is constant $O(1)$ since we only need 2 variables, one for the candidate and another for the counter.
 
 ```python
 def majority_element(array):
@@ -157,7 +157,7 @@ def majority_element(array):
 A generalization of the previous problem is when we want to find not only the majority element, but all frequent elements which are elements occurring more than a given fraction of the time, that is more than a certain proportion of the input size.
 For example, we might want to find all elements that appear more than $\lfloor n / 3 \rfloor$ times. In other words, find the 2 most frequent elements, if any.  
 Why the **2** most frequent elements you say? It's because that is the maximum number possible given the constraint.  
-And in the general case, there would be a maximum of **$(k - 1)$** most frequent elements for a threshold of $\lfloor n / k \rfloor$.
+And in the general case, there would be a maximum of $(k - 1)$ most frequent elements for a threshold of $\lfloor n / k \rfloor$.
 
 
 So how can we generalize the Boyer-Moore Majority Vote Algorithm (which can be thought of as the **1** most frequent element problem) to solve this problem? We simply need to imagine another fight :)  
@@ -173,7 +173,7 @@ You might have doubts at this point regarding the correctness of this algorithm,
 And if we delete only one candidate from the list, then we should be able to verify its eligibility when we perform an extra check at the end, just like in the original algorithm.  
 
 
-This makes the time complexity of the algorithm linear *$O(n * k)$* since we would have to loop through the input sequence and potentially go through all $(k - 1)$ candidates when a fight should happen, and the space complexity is constant *$O(k)$* since we would need at most $(k - 1)$ variables to keep track of the candidates. 
+This makes the time complexity of the algorithm linear $O(n * k)$ since we would have to loop through the input sequence and potentially go through all $(k - 1)$ candidates when a fight should happen, and the space complexity is constant $O(k)$ since we would need at most $(k - 1)$ variables to keep track of the candidates. 
 
 Let's make this into Python code:  
 ```python
@@ -237,7 +237,7 @@ def most_frequent(array, k):
 
 ## Taking advantage of the structure of the problem
 It is important to treat each problem separately and take advantage of its constraints whenever possible.  
-If the input array was sorted, the majority element problem would be greatly simplified (it is not worth it to sort the array yourself, since the time complexity needed would be *$O(nlog(n))$*).  
+If the input array was sorted, the majority element problem would be greatly simplified (it is not worth it to sort the array yourself, since the time complexity needed would be $O(nlog(n))$).  
 We would simply loop through the array one item at a time and increment a counter variable as we're still consuming the same element (since the array is sorted, equal elements would be held next to each other in contiguous slots).  
 
 If this element has been repeated as many times as needed, then we've found our majority element; otherwise, if we counter a different element, we would have to repeat the same process again.

@@ -1,4 +1,4 @@
-# From-Majority-to-Frequent-Elements-Boyer-Moore-and-Misra-Gries
+# From Majority to Frequent Elements: Boyer Moore and Misra Gries
 ## Boyer-Moore Majority Vote Algorithm
 
 The Boyer-Moore majority vote algorithm[^wiki-article] is an efficient algorithm used for finding the majority element, if any, in a sequence of elements using linear time complexity $O(n)$ and constant space complexity $O(1)$.  
